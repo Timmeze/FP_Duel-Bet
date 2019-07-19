@@ -1,13 +1,11 @@
-from flask import Flask, render_template, redirect, url_for, sessions, request
-from db import get_pari, update_user_db, update_pari_db, add_user_db, drop_user_db, add_pari_db
-from classes import User, Pari, User_list, Pari_list
-import db
+from flask import Flask, render_template, request
+from app.db import update_user_db, update_pari_db, add_user_db, drop_user_db, add_pari_db
+from app.classes import User, Pari, User_list, Pari_list
 
 DATABASE_URL = 'db.sqlite'
 
 pari_list = Pari_list()
 user_list = User_list()
-
 
 user_1 = User('Mark','0000_0000_0000_0001')
 user_2 = User('Petya', '0000_0000_0000_0002')
@@ -15,23 +13,22 @@ user_2 = User('Petya', '0000_0000_0000_0002')
 user_1.change_balance(100)
 user_2.change_balance(200)
 
-add_user_db(DATABASE_URL,user_1)
-add_user_db(DATABASE_URL,user_2)
-
 user_list.add_to_user_list(item=user_1)
 user_list.add_to_user_list(item=user_2)
 
 
 pari_1 = Pari('Пари 1', user_1, 50)
-user_1.change_balance(-50)
 pari_list.add_to_pari_list(pari_1)
+user_1.change_balance(-50)
 
+
+add_user_db(DATABASE_URL, user_1)
+add_user_db(DATABASE_URL, user_2)
 add_pari_db(DATABASE_URL, pari_1)
 
 
-
-
 app = Flask(__name__)
+
 
 @app.route('/', methods=['POST', 'GET'])
 def index():

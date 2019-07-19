@@ -1,5 +1,5 @@
 import sqlite3
-from classes import User, Pari
+
 
 def open_db(db_url):
     db = sqlite3.connect(db_url)

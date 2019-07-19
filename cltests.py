@@ -1,7 +1,4 @@
-from classes import User, Pari, User_list, Pari_list
-from db import get_pari, update_user_db, update_pari_db, open_db, add_user_db
-import db
-import sqlite3
+from app.classes import User
 
 DATABASE_URL = 'db.sqlite'
 user_1 = User('Vasya','0000_0000_0000_0001')
