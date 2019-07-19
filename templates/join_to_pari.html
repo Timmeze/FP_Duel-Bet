@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<h1>{{ pari.name }}</h1>
+<p>
+    {% if warning %}
+    <p class=warning><strong></strong></p>{{ warning }}
+    {% endif %}
+</p>
+<form action="{{ url_for('join_to_pari', pari_id = pari.id) }}" method="post">
+    <p>Введите Ваше имя      <input type="text" value="{{ name }}" name="name" required></p>
+    <p>Введите сумму ставки  <input type="text" value="{{ bet }}" name="bet" required></p>
+    <p><input name="side"  type="radio" value="1">Сторона 1</p>
+    <p><input name="side" type="radio" value="2">Сторона 2</p>
+
+    <button>Присоединиться к пари</button>
+    </form>
+</body>
+</html>

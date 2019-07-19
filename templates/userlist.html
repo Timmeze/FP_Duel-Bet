@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Список польователей</h1>
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Баланс</th>
+        <th>Всего пари</th>
+        <th>Победы</th>
+        <th>Поражения</th>
+    </tr>
+    {%for user in user_list%}
+    <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.balance}}</td>
+        <td>{{user.total_duel}}</td>
+        <td>{{user.win_duel}}</td>
+        <td>{{user.loss_duel}}</td>
+        <td>
+            <form action="{{ url_for('add_balance', user_id=user.id) }}" method="get">
+            <button>Изменить баланс</button>
+            </form>
+        </td>
+        <td>
+            <form action="{{ url_for('delete_user', user_id=user.id) }}" method="post">
+            <button>Удалить игрока</button>
+            </form>
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+
+<a href="{{ url_for('create_user')}}" methods="get" class="btn btn-primary">Создать игрока</a>
+
+<p><a href="{{ url_for('index')}}" methods="post" class="btn btn-primary"> Вернуться в меню </a> </p>
+
+</body>
+</html>

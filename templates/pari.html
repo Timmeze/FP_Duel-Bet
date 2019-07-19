@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>{{pari.name}}</h1>
+<form action="{{ url_for('pari_result', pari_id  = pari.id )}}" method="post">
+    <p><input name="winner"  type="radio" value="1">Сторона 1</p>
+    <p><input name="winner" type="radio" value="2">Сторона 2</p>
+    <p><input type="submit" value="Выбрать победителя"></p>
+    </form>
+
+
+<table>
+<tr>
+    <td>{{pari.duel_rivals_name_1|replace("['", "")|replace("']", "")|replace("'","")}}</td>
+    <td>{{pari.duel_rivals_name_2|replace("['", "")|replace("']", "")|replace("[", "")|replace("]", "")|replace("'","")}}</td>
+</tr>
+<tr>
+    <td>{{pari.duel_sum_1}}</td>
+    <td>{{pari.duel_sum_2}}</td>
+</tr>
+
+<tr>
+    <td>
+        <form action="{{ url_for('join_to_pari', pari_id = pari.id)}}" methods="post">
+    <button>Присоединиться к ПАРИ</button>
+</form>
+    </td>
+</tr>
+    <tr>
+        <td>{{ pari.duel_winners|replace("['", "")|replace("']", "")|replace("[", "")|replace("]", "")|replace("'","")}}</td>
+    </tr>
+</table>
+
+<p>{{ pari.likes }}<a href="{{ url_for('add_like', pari_id = pari.id)}}" methods="post" class="btn btn-primary">  Лайк</a></p>
+<p><a href="{{ url_for('index')}}" methods="post" class="btn btn-primary"> Вернуться в меню </a> </p>
+
+</body>
+</html>

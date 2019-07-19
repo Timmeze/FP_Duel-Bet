@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>{{ user.name }}</h1>
+
+<form action="{{ url_for('add_balance', user_id = user.id) }}" method="post">
+    <p>Сумма для зачисления  <input type="text" value="{{ sum_in }}" name="sum_in" required></p>
+    <p><input name="add_type"  type="radio" value="1">С мобильного телефона</p>
+    <p><input name="add_type" type="radio" value="2">С карты</p>
+    <button>Пополнить баланс</button>
+</form>
+
+<p><a href="{{ url_for('index')}}" methods="post" class="btn btn-primary"> Вернуться в меню </a> </p>
+
+</body>
+</html>

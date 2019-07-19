@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<h1>Pari</h1>
+<body>
+    {%for item in show%}
+<li>
+{{item.name}}
+    <a href="{{ url_for('pari_view', pari_id = item.id)}}" methods="post" class="btn btn-primary">Подробнее</a>
+
+</li>
+    {% endfor %}
+    <a href="{{ url_for('user_view')}}" methods="post" class="btn btn-primary">Список игроков</a>
+    <a href="{{ url_for('create_pari')}}" methods="post" class="btn btn-primary">Создать пари</a>
+
+
+</body>
+</html>
