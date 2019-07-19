@@ -1,4 +1,4 @@
-from app.classes import User
+from classes import User
 
 DATABASE_URL = 'db.sqlite'
 user_1 = User('Vasya','0000_0000_0000_0001')
