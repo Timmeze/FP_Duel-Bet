@@ -4,6 +4,7 @@ from db import update_user_db, update_pari_db, add_user_db, drop_user_db, add_pa
 from classes import User, Pari, User_list, Pari_list
 import os
 
+
 DATABASE_URL = 'db.sqlite'
 
 pari_list = Pari_list()
