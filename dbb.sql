@@ -29,6 +29,3 @@ drop table users;
 
 drop table pari;
 
-select * from users;
-
-delete from users;
