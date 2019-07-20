@@ -16,11 +16,14 @@
 <body>
 
 <h1>{{pari.name}}</h1>
+{% if pari.duel_winners == [] %}
+
 <form action="{{ url_for('pari_result', pari_id  = pari.id )}}" method="post">
-    <p><input name="winner"  type="radio" value="1">Сторона 1</p>
-    <p><input name="winner" type="radio" value="2">Сторона 2</p>
+    <p><input name="winner"  type="radio" value="1">Сторона 1
+    <input name="winner" type="radio" value="2">Сторона 2</p>
     <p><input type="submit" value="Выбрать победителя"></p>
     </form>
+{% endif %}
 
 
 <table>
